@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClassPulseAI - Version 2 Final Revised</title>
+
+<title>ClassPulseAI — Version 2</title>
 
 <style>
 * {
@@ -31,7 +32,7 @@ body {
 .skip-link:focus {
   left: 12px;
   top: 12px;
-  background: #fff;
+  background: white;
   padding: 10px 14px;
   z-index: 1000;
   border: 2px solid #1f5f7a;
@@ -39,7 +40,7 @@ body {
 
 header {
   background: #274c5e;
-  color: #fff;
+  color: white;
   padding: 30px 20px;
 }
 
@@ -64,7 +65,7 @@ main {
 }
 
 .card {
-  background: #fff;
+  background: white;
   border-radius: 10px;
   padding: 24px;
   margin-bottom: 22px;
@@ -127,7 +128,7 @@ select {
   border: 1px solid #9fb3c8;
   border-radius: 6px;
   font: inherit;
-  background: #fff;
+  background: white;
   color: #24313d;
 }
 
@@ -163,7 +164,7 @@ button {
   border-radius: 6px;
   padding: 12px 20px;
   background: #2f6f8f;
-  color: #fff;
+  color: white;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -225,12 +226,17 @@ footer {
 
 <body>
 
-<a class="skip-link" href="#main">Skip to main content</a>
+<a class="skip-link" href="#main">
+  Skip to main content
+</a>
 
 <header>
   <div class="wrap">
     <h1>ClassPulseAI</h1>
-    <p>Version 2 — Rule-Based Draft Behavior-Support Planning Tool</p>
+
+    <p>
+      Version 2 — Rule-Based Draft Behavior-Support Planning Tool
+    </p>
   </div>
 </header>
 
@@ -240,9 +246,9 @@ footer {
 
   <div class="info">
     <strong>How this prototype works:</strong>
-    ClassPulseAI uses predefined browser rules rather than a live AI or LLM
-    service. It organizes educator-entered information into a structured
-    draft for educator review.
+    ClassPulseAI uses predefined browser rules rather than a live AI or
+    LLM service. It organizes educator-entered information into a
+    structured draft for educator review.
   </div>
 
   <div class="scope">
@@ -256,9 +262,9 @@ footer {
 
   <div class="privacy">
     <strong>Privacy reminder:</strong>
-    Enter only de-identified educational information. Do not enter student
-    names, student identification numbers, diagnoses, medical information,
-    or unnecessary information about other students.
+    Enter only de-identified educational information. Do not enter
+    student names, student identification numbers, diagnoses, medical
+    information, or unnecessary information about other students.
   </div>
 
   <h2 id="inputHeading">
@@ -271,7 +277,10 @@ footer {
 
   <form id="supportForm" novalidate>
 
-    <label for="grade">Grade level *</label>
+    <label for="grade">
+      Grade level *
+    </label>
+
     <input
       id="grade"
       type="text"
@@ -279,7 +288,11 @@ footer {
       placeholder="Example: Grade 6"
     >
 
-    <label for="behavior">Observable behavior *</label>
+
+    <label for="behavior">
+      Observable behavior *
+    </label>
+
     <textarea
       id="behavior"
       placeholder="Example: During independent work, the student frequently talks to nearby classmates and sometimes leaves their seat without permission."
@@ -289,6 +302,9 @@ footer {
       Describe what can be seen or heard. Avoid subjective labels or
       assumptions about why the behavior occurs.
     </p>
+
+
+    <!-- STRUCTURED BASELINE INFORMATION -->
 
     <h3>Baseline Information</h3>
 
@@ -312,24 +328,39 @@ footer {
         >
       </div>
 
+
       <div>
         <label for="measurementType">
           Measurement type
         </label>
 
         <select id="measurementType">
-          <option value="">Select a measurement type</option>
-          <option value="Frequency">Frequency</option>
-          <option value="Duration">Duration</option>
+          <option value="">
+            Select a measurement type
+          </option>
+
+          <option value="Frequency">
+            Frequency
+          </option>
+
+          <option value="Duration">
+            Duration
+          </option>
+
           <option value="Occurrence / non-occurrence">
             Occurrence / non-occurrence
           </option>
+
           <option value="Percentage of opportunities">
             Percentage of opportunities
           </option>
-          <option value="Other">Other</option>
+
+          <option value="Other">
+            Other
+          </option>
         </select>
       </div>
+
 
       <div>
         <label for="observedValue">
@@ -343,6 +374,7 @@ footer {
           placeholder="Example: 3–5 times"
         >
       </div>
+
 
       <div>
         <label for="observationPeriod">
@@ -359,6 +391,7 @@ footer {
 
     </div>
 
+
     <label for="patterns">
       Documented situations or patterns
     </label>
@@ -367,6 +400,7 @@ footer {
       id="patterns"
       placeholder="Example: The behavior is more common during longer assignments."
     ></textarea>
+
 
     <label for="strengths">
       Student strengths or interests
@@ -377,6 +411,7 @@ footer {
       placeholder="Example: The student enjoys technology, responds to positive feedback, and works well when assignments are divided into smaller parts."
     ></textarea>
 
+
     <label for="strategies">
       Current strategies
     </label>
@@ -385,6 +420,7 @@ footer {
       id="strategies"
       placeholder="Example: Verbal reminders to return to the assignment."
     ></textarea>
+
 
     <label for="desired">
       Desired behavior *
@@ -395,6 +431,7 @@ footer {
       placeholder="Example: Remain in the assigned area, limit unrelated conversation, and complete independent work."
     ></textarea>
 
+
     <div
       id="error"
       class="error"
@@ -402,11 +439,13 @@ footer {
       aria-live="assertive"
     ></div>
 
+
     <button type="submit">
       Generate Draft Support Plan
     </button>
 
   </form>
+
 </section>
 
 
@@ -424,7 +463,8 @@ footer {
 
   <div class="success">
     <strong>Draft generated.</strong>
-    Review every section before using the information for educational planning.
+    Review every section before using the information for educational
+    planning.
   </div>
 
   <div id="plan"></div>
@@ -436,7 +476,8 @@ footer {
 
 <footer>
   <div class="wrap">
-    ClassPulseAI Version 2 · Rule-based browser prototype · Human review required
+    ClassPulseAI Version 2 · Rule-based browser prototype ·
+    Human review required
   </div>
 </footer>
 
@@ -454,7 +495,9 @@ function valueOf(id) {
 
 
 function escapeHTML(text) {
+
   return String(text).replace(/[&<>"']/g, function(character) {
+
     return {
       "&": "&amp;",
       "<": "&lt;",
@@ -462,7 +505,9 @@ function escapeHTML(text) {
       '"': "&quot;",
       "'": "&#039;"
     }[character];
+
   });
+
 }
 
 
@@ -472,11 +517,21 @@ function displayValue(text, fallback) {
 
 
 function patternMentionsLongIndependentWork(text) {
+
   return (
-    /\b(long|longer|lengthy|extended)\b[\s\S]{0,80}\b(assignments?|tasks?|work)\b/i.test(text) ||
-    /\b(assignments?|tasks?|work)\b[\s\S]{0,80}\b(long|longer|lengthy|extended)\b/i.test(text) ||
+
+    /\b(long|longer|lengthy|extended)\b[\s\S]{0,80}\b(assignments?|tasks?|work)\b/i.test(text)
+
+    ||
+
+    /\b(assignments?|tasks?|work)\b[\s\S]{0,80}\b(long|longer|lengthy|extended)\b/i.test(text)
+
+    ||
+
     /\bindependent\s+(work|assignments?|tasks?)\b/i.test(text)
+
   );
+
 }
 
 
@@ -484,41 +539,72 @@ form.addEventListener("submit", function(event) {
 
   event.preventDefault();
 
-  const grade = valueOf("grade");
-  const behavior = valueOf("behavior");
-  const baselineBehavior = valueOf("baselineBehavior");
-  const measurementType = valueOf("measurementType");
-  const observedValue = valueOf("observedValue");
-  const observationPeriod = valueOf("observationPeriod");
-  const patterns = valueOf("patterns");
-  const strengths = valueOf("strengths");
-  const strategies = valueOf("strategies");
-  const desired = valueOf("desired");
+
+  const grade =
+    valueOf("grade");
+
+  const behavior =
+    valueOf("behavior");
+
+  const baselineBehavior =
+    valueOf("baselineBehavior");
+
+  const measurementType =
+    valueOf("measurementType");
+
+  const observedValue =
+    valueOf("observedValue");
+
+  const observationPeriod =
+    valueOf("observationPeriod");
+
+  const patterns =
+    valueOf("patterns");
+
+  const strengths =
+    valueOf("strengths");
+
+  const strategies =
+    valueOf("strategies");
+
+  const desired =
+    valueOf("desired");
+
 
   errorBox.style.display = "none";
   errorBox.textContent = "";
 
+
   const missing = [];
 
+
   if (!grade) {
+
     missing.push({
       name: "grade level",
       id: "grade"
     });
+
   }
 
+
   if (!behavior) {
+
     missing.push({
       name: "observable behavior",
       id: "behavior"
     });
+
   }
 
+
   if (!desired) {
+
     missing.push({
       name: "desired behavior",
       id: "desired"
     });
+
   }
 
 
@@ -529,21 +615,27 @@ form.addEventListener("submit", function(event) {
       missing.map(item => item.name).join(", ") +
       ".";
 
+
     errorBox.style.display = "block";
 
     output.hidden = true;
 
-    document.getElementById(missing[0].id).focus();
+    document
+      .getElementById(missing[0].id)
+      .focus();
 
     return;
+
   }
 
 
   const safe = {
 
-    grade: escapeHTML(grade),
+    grade:
+      escapeHTML(grade),
 
-    behavior: escapeHTML(behavior),
+    behavior:
+      escapeHTML(behavior),
 
     baselineBehavior:
       displayValue(
@@ -589,6 +681,7 @@ form.addEventListener("submit", function(event) {
 
     desired:
       escapeHTML(desired)
+
   };
 
 
@@ -605,22 +698,33 @@ form.addEventListener("submit", function(event) {
 
     ? `
       <div class="success">
+
         <strong>Baseline review:</strong>
+
         A behavior, measurement type, observed value, and observation
-        period were entered. The educator should verify that all four
-        fields refer to the same clearly defined observable behavior
-        before using the baseline to develop a measurable goal.
+        period were entered.
+
+        The educator should verify that all four fields refer to the
+        same clearly defined observable behavior before using the
+        baseline to develop a measurable goal.
+
       </div>
     `
 
     : `
       <div class="warning">
+
         <strong>Baseline review:</strong>
-        The baseline is incomplete. A behavior-specific baseline is
-        strongest when it identifies the behavior being measured,
-        measurement type, observed value, and observation period.
+
+        The baseline is incomplete.
+
+        A behavior-specific baseline is strongest when it identifies
+        the behavior being measured, measurement type, observed value,
+        and observation period.
+
         Complete or clarify the missing information before treating
         the baseline as sufficient for measurable goal development.
+
       </div>
     `;
 
@@ -644,15 +748,17 @@ form.addEventListener("submit", function(event) {
       "A documented pattern was entered. Select preventive supports " +
       "that directly address the documented situation. This prototype " +
       "will not assume that assignment length or independent work is " +
-      "the relevant factor unless the entered pattern supports that connection.";
+      "the relevant factor unless the entered pattern supports that " +
+      "connection.";
 
   }
 
   else {
 
     preventiveStrategy =
-      "No documented situation or pattern was entered. Collect additional " +
-      "observations before selecting a pattern-specific preventive strategy.";
+      "No documented situation or pattern was entered. Collect " +
+      "additional observations before selecting a pattern-specific " +
+      "preventive strategy.";
 
   }
 
@@ -666,17 +772,21 @@ form.addEventListener("submit", function(event) {
       </p>
 
       <p>
-        Consider these documented strengths when choosing encouragement,
-        examples, task presentation, or reinforcement when appropriate.
-        Do not infer a diagnosis, motivation, or behavioral function from
-        strengths alone.
+        Consider these documented strengths when choosing
+        encouragement, examples, task presentation, or reinforcement
+        when appropriate.
+
+        Do not infer a diagnosis, motivation, or behavioral function
+        from strengths alone.
       </p>
     `
 
     : `
       <p>
-        No strengths or interests were entered. Gather documented strengths
-        before attempting to personalize supports around them.
+        No strengths or interests were entered.
+
+        Gather documented strengths before attempting to personalize
+        supports around them.
       </p>
     `;
 
@@ -691,9 +801,12 @@ form.addEventListener("submit", function(event) {
 
       <p>
         <strong>Possible next step:</strong>
-        Continue monitoring the current strategy using a behavior-specific
-        measure. If documented progress is limited, revise the response
-        based on additional observation and educator judgment rather than
+
+        Continue monitoring the current strategy using a
+        behavior-specific measure.
+
+        If documented progress is limited, revise the response based
+        on additional observation and educator judgment rather than
         assuming why the behavior occurs.
       </p>
     `
@@ -706,8 +819,9 @@ form.addEventListener("submit", function(event) {
 
       <p>
         <strong>Possible next step:</strong>
-        Select a brief, neutral response connected to the observable behavior
-        and monitor it consistently.
+
+        Select a brief, neutral response connected to the observable
+        behavior and monitor it consistently.
       </p>
     `;
 
@@ -716,17 +830,19 @@ form.addEventListener("submit", function(event) {
 
     ? `
       If developmentally appropriate, consider a brief self-monitoring
-      routine connected to the desired behavior. Because
-      <strong>${safe.measurementType}</strong> was selected as the
-      measurement type, a simple student-friendly version of that measure
-      may be considered only if the student can use it accurately and
-      appropriately.
+      routine connected to the desired behavior.
+
+      Because <strong>${safe.measurementType}</strong> was selected as
+      the measurement type, a simple student-friendly version of that
+      measure may be considered only if the student can use it
+      accurately and appropriately.
     `
 
     : `
-      A measurement type has not been selected. Select an appropriate
-      behavior-specific measure before designing a student self-monitoring
-      routine.
+      A measurement type has not been selected.
+
+      Select an appropriate behavior-specific measure before designing
+      a student self-monitoring routine.
     `;
 
 
@@ -735,14 +851,16 @@ form.addEventListener("submit", function(event) {
     ? `
       Use the selected <strong>${safe.measurementType}</strong> measure
       consistently when monitoring the clearly defined target behavior.
-      Keep the process brief enough to fit normal classroom routines and
-      use comparable observation periods when possible.
+
+      Keep the process brief enough to fit normal classroom routines
+      and use comparable observation periods when possible.
     `
 
     : `
       Select one simple behavior-specific measurement method before
-      beginning progress monitoring. Keep the process brief enough to fit
-      normal classroom routines.
+      beginning progress monitoring.
+
+      Keep the process brief enough to fit normal classroom routines.
     `;
 
 
@@ -751,20 +869,24 @@ form.addEventListener("submit", function(event) {
     ? `
       A teacher-facing dashboard could display the desired behavior,
       selected measurement type, observation period, current strategy,
-      and recent behavior-specific progress. Role-appropriate views
-      should display only information needed by authorized users.
+      and recent behavior-specific progress.
+
+      Role-appropriate views should display only information needed by
+      authorized users.
     `
 
     : `
       A teacher-facing dashboard could display the desired behavior,
-      documented strengths, current strategy, and a notice that baseline
-      information is incomplete. It should not imply a precise progress
-      trend or graph before the behavior and measurement method are
-      clearly defined.
+      documented strengths, current strategy, and a notice that
+      baseline information is incomplete.
+
+      It should not imply a precise progress trend or graph before the
+      behavior and measurement method are clearly defined.
     `;
 
 
   document.getElementById("plan").innerHTML = `
+
 
     <div class="plan-section">
 
@@ -796,7 +918,9 @@ form.addEventListener("submit", function(event) {
 
       <h3>3. Documented Patterns</h3>
 
-      <p>${safe.patterns}</p>
+      <p>
+        ${safe.patterns}
+      </p>
 
     </div>
 
@@ -806,11 +930,14 @@ form.addEventListener("submit", function(event) {
       <h3>4. Hypotheses to Monitor</h3>
 
       <p>
-        The entered information does not establish why the behavior occurs.
-        Continue monitoring whether documented classroom situations, task
-        characteristics, or other observable conditions are consistently
-        associated with the behavior. These are hypotheses to monitor,
-        not confirmed explanations.
+        The entered information does not establish why the behavior
+        occurs.
+
+        Continue monitoring whether documented classroom situations,
+        task characteristics, or other observable conditions are
+        consistently associated with the behavior.
+
+        These are hypotheses to monitor, not confirmed explanations.
       </p>
 
     </div>
@@ -849,11 +976,13 @@ form.addEventListener("submit", function(event) {
 
       <p>
         <strong>Goal-development note:</strong>
+
         ClassPulseAI does not automatically invent a numerical target.
-        After confirming that the baseline measures one clearly defined
-        behavior, the educator should use the documented baseline,
-        educational context, and professional judgment to establish
-        an appropriate measurable target.
+
+        After confirming that the baseline measures one clearly
+        defined behavior, the educator should use the documented
+        baseline, educational context, and professional judgment to
+        establish an appropriate measurable target.
       </p>
 
     </div>
@@ -869,17 +998,21 @@ form.addEventListener("submit", function(event) {
       </p>
 
       <p>
-        A positive replacement behavior should be observable, teachable,
-        appropriate for the classroom context, and capable of serving
-        as an acceptable alternative to the behavior of concern.
+        A positive replacement behavior should be observable,
+        teachable, appropriate for the classroom context, and capable
+        of serving as an acceptable alternative to the behavior of
+        concern.
       </p>
 
       <p>
         <strong>Human-review note:</strong>
-        This prototype does not automatically select a replacement behavior
-        because the entered information may not establish why the behavior
-        occurs. The educator should select and teach an appropriate
-        replacement behavior after reviewing the documented context.
+
+        This prototype does not automatically select a replacement
+        behavior because the entered information may not establish why
+        the behavior occurs.
+
+        The educator should select and teach an appropriate replacement
+        behavior after reviewing the documented context.
       </p>
 
     </div>
@@ -889,7 +1022,9 @@ form.addEventListener("submit", function(event) {
 
       <h3>7. Preventive Strategies</h3>
 
-      <p>${preventiveStrategy}</p>
+      <p>
+        ${preventiveStrategy}
+      </p>
 
     </div>
 
@@ -907,7 +1042,9 @@ form.addEventListener("submit", function(event) {
 
       <h3>9. Student Self-Monitoring</h3>
 
-      <p>${selfMonitoring}</p>
+      <p>
+        ${selfMonitoring}
+      </p>
 
     </div>
 
@@ -920,7 +1057,8 @@ form.addEventListener("submit", function(event) {
         If communication with a parent or guardian is appropriate under
         school procedures, describe the observable desired behavior as
         <strong>${safe.desired}</strong> and share relevant progress
-        information without unnecessary sensitive or identifying information.
+        information without unnecessary sensitive or identifying
+        information.
       </p>
 
     </div>
@@ -930,7 +1068,9 @@ form.addEventListener("submit", function(event) {
 
       <h3>11. Low-Workload Progress Monitoring</h3>
 
-      <p>${progressMonitoring}</p>
+      <p>
+        ${progressMonitoring}
+      </p>
 
     </div>
 
@@ -939,7 +1079,9 @@ form.addEventListener("submit", function(event) {
 
       <h3>12. Dashboard Recommendations</h3>
 
-      <p>${dashboard}</p>
+      <p>
+        ${dashboard}
+      </p>
 
     </div>
 
@@ -949,9 +1091,10 @@ form.addEventListener("submit", function(event) {
       <h3>13. Information That Should Not Be Displayed</h3>
 
       <p>
-        Do not display unnecessary identifying information, information
-        about other students, unsupported diagnoses, speculative explanations,
-        or sensitive information that is not required for the educational purpose.
+        Do not display unnecessary identifying information,
+        information about other students, unsupported diagnoses,
+        speculative explanations, or sensitive information that is not
+        required for the educational purpose.
       </p>
 
     </div>
@@ -962,9 +1105,11 @@ form.addEventListener("submit", function(event) {
       <h3>14. Plan Review and Revision</h3>
 
       <p>
-        Review the plan after enough behavior-specific information has been
-        collected to evaluate progress. Continue, revise, or gather additional
-        information based on documented evidence and educator judgment.
+        Review the plan after enough behavior-specific information has
+        been collected to evaluate progress.
+
+        Continue, revise, or gather additional information based on
+        documented evidence and educator judgment.
       </p>
 
     </div>
@@ -997,9 +1142,9 @@ form.addEventListener("submit", function(event) {
       ${baselineReview}
 
       <p>
-        Missing or ambiguous information should be clarified before treating
-        a goal, intervention, replacement behavior, or progress measure as
-        established.
+        Missing or ambiguous information should be clarified before
+        treating a goal, intervention, replacement behavior, or
+        progress measure as established.
       </p>
 
     </div>
@@ -1010,15 +1155,17 @@ form.addEventListener("submit", function(event) {
       <h3>16. Privacy and Human-Review Notes</h3>
 
       <p>
-        This prototype organizes educator-entered information using predefined
-        browser rules. It does not diagnose a student or independently make
-        educational, disciplinary, medical, disability-related, or placement
-        decisions.
+        This prototype organizes educator-entered information using
+        predefined browser rules.
+
+        It does not diagnose a student or independently make
+        educational, disciplinary, medical, disability-related, or
+        placement decisions.
       </p>
 
       <p>
-        An authorized educator or student-support professional should review
-        the information before any plan is implemented.
+        An authorized educator or student-support professional should
+        review the information before any plan is implemented.
       </p>
 
     </div>
@@ -1028,10 +1175,13 @@ form.addEventListener("submit", function(event) {
 
   output.hidden = false;
 
+
   const outputHeading =
     document.getElementById("outputHeading");
 
+
   outputHeading.focus();
+
 
   outputHeading.scrollIntoView({
 
