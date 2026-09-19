@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassPulseAI — Version 2</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #24313d;
+  line-height: 1.5;
+}
+
+header {
+  background: #243b53;
+  color: white;
+  padding: 28px 20px;
+}
+
+header .container, main {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+h1 { margin: 0 0 6px; font-size: 2rem; }
+header p { margin: 0; }
+
+main { padding: 28px 20px 50px; }
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+h2 { margin-top: 0; color: #243b53; }
+h3 { color: #334e68; margin-bottom: 6px; }
+
+.intro {
+  background: #eaf2f8;
+  border-left: 5px solid #486581;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.privacy {
+  background: #f0f4f8;
+  border-left: 5px solid #627d98;
+  padding: 13px 15px;
+  margin: 15px 0;
+}
+
+.info {
+  background: #f7fafc;
+  border-left: 5px solid #829ab1;
+  padding: 12px 15px;
+  margin: 15px 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 17px 0 6px;
+}
+
+.hint {
+  font-size: .9rem;
+  color: #52606d;
+  margin-top: 0;
+}
+
+input, textarea {
+  width: 100%;
+  border: 1px solid #9fb3c8;
+  border-radius: 6px;
+  padding: 11px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+input:focus, textarea:focus, button:focus {
+  outline: 3px solid #9fbad0;
+  outline-offset: 2px;
+}
+
+button {
+  margin-top: 22px;
+  background: #2f6f8f;
+  color: white;
+  border: 0;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover { background: #245b75; }
+
+.error {
+  display: none;
+  background: #fff4e5;
+  border-left: 5px solid #c05621;
+  padding: 12px 15px;
+  margin-top: 18px;
+}
+
+.success {
+  background: #e6ffed;
+  border-left: 5px solid #2f855a;
+  padding: 13px 15px;
+  margin: 12px 0;
+}
+
+.warning {
+  background: #fff8e1;
+  border-left: 5px solid #b7791f;
+  padding: 13px 15px;
+  margin: 12px 0;
+}
+
+.plan-section {
+  border-top: 1px solid #d9e2ec;
+  padding: 15px 0;
+}
+
+.plan-section:first-child { border-top: 0; }
+.plan-section p { margin-top: 5px; }
+
+.small {
+  font-size: .9rem;
+  color: #52606d;
+}
+
+footer {
+  text-align: center;
+  color: #52606d;
+  font-size: .9rem;
+  padding: 0 20px 30px;
+}
+
+@media (max-width: 650px) {
+  main { padding: 18px 12px 35px; }
+  .card { padding: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <h1>ClassPulseAI</h1>
+    <p>Version 2 — Rule-Based Draft Behavior-Support Plan Tool</p>
+  </div>
+</header>
+
+<main>
+
+<section class="card">
+
+  <div class="intro">
+    <strong>Purpose:</strong>
+    ClassPulseAI helps educators organize de-identified observations
+    and create a structured draft behavior-support plan for human review.
+  </div>
+
+  <div class="info">
+    <strong>How this version works:</strong>
+    This browser-based prototype uses predefined rules to organize the
+    information you enter. It does not connect to a live AI or LLM service.
+    The recommendations are suggestions for educator review, not automated decisions.
+  </div>
+
+  <div class="privacy">
+    <strong>Privacy reminder:</strong>
+    Enter only de-identified information needed for this educational task.
+    Do not enter student names, diagnoses, medical information, or unnecessary
+    information about other students.
+  </div>
+
+  <h2>Step 1: Enter Student Observation Information</h2>
+
+  <p class="small">
+    Required fields are marked with an asterisk (*).
+    Use specific, observable descriptions.
+  </p>
+
+  <form id="supportForm" novalidate>
+
+    <label for="grade">Grade level *</label>
+    <input id="grade" type="text" placeholder="Example: Grade 6" required>
+
+    <label for="behavior">Observable behavior *</label>
+    <textarea
+      id="behavior"
+      placeholder="Describe exactly what can be seen or heard. Example: talks to nearby classmates during independent work."
+      required
+    ></textarea>
+
+    <p class="hint">
+      Avoid labels such as “unmotivated” or “disruptive.”
+      Describe the observable action instead.
+    </p>
+
+    <label for="baseline">Behavior-specific baseline or frequency</label>
+    <textarea
+      id="baseline"
+      placeholder="Example: The student talked to nearby classmates 3 times during one 45-minute class."
+    ></textarea>
+
+    <p class="hint">
+      If you report a number, identify which specific behavior the number measures.
+      A range such as “2–4 times” can be used if you identify what is being counted.
+    </p>
+
+    <label for="patterns">Documented situations or patterns</label>
+    <textarea
+      id="patterns"
+      placeholder="Example: Talking was more common during longer independent assignments."
+    ></textarea>
+
+    <label for="strengths">Student strengths or interests</label>
+    <textarea
+      id="strengths"
+      placeholder="Example: enjoys technology; responds to positive feedback; works well when assignments are divided into smaller parts."
+    ></textarea>
+
+    <label for="strategies">Current strategies</label>
+    <textarea
+      id="strategies"
+      placeholder="Example: verbal reminders to return to the assignment."
+    ></textarea>
+
+    <label for="desired">Desired behavior *</label>
+    <textarea
+      id="desired"
+      placeholder="Describe the behavior you want to see. Example: remain in assigned area and complete independent work."
+      required
+    ></textarea>
+
+    <button type="submit">Generate Draft Support Plan</button>
+
+    <div id="error" class="error" role="alert"></div>
+
+  </form>
+
+</section>
+
+
+<section
+  id="output"
+  class="card"
+  aria-labelledby="outputHeading"
+  aria-live="polite"
+  hidden
+>
+
+  <h2 id="outputHeading" tabindex="-1">Step 2: Review Draft Support Plan</h2>
+
+  <div class="success">
+    <strong>Draft created.</strong>
+    Review all recommendations before using the plan.
+  </div>
+
+  <div id="plan"></div>
+
+</section>
+
+</main>
+
+<footer>
+  ClassPulseAI Version 2 · Rule-based browser prototype · Human review required
+</footer>
+
+
+<script>
+
+const output = document.getElementById("output");
+
+function clean(id) {
+  return document.getElementById(id).value.trim();
+}
+
+function valueOr(text, fallback) {
+  return text ? text : fallback;
+}
+
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, function(c) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[c];
+  });
+}
+
+/*
+  This helper checks whether the educator's documented patterns
+  actually mention long assignments or independent work.
+  The application only recommends breaking assignments into parts
+  when the entered evidence supports that connection.
+*/
+function patternMentionsLongIndependentWork(text) {
+  return /\b(long|longer|lengthy|extended)\b[\s\S]{0,80}\b(assignments?|tasks?|work)\b/i.test(text)
+      || /\b(assignments?|tasks?|work)\b[\s\S]{0,80}\b(long|longer|lengthy|extended)\b/i.test(text)
+      || /\bindependent\s+(work|assignments?|tasks?)\b/i.test(text);
+}
+
+
+document
+  .getElementById("supportForm")
+  .addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const grade = clean("grade");
+    const behavior = clean("behavior");
+    const baseline = clean("baseline");
+    const patterns = clean("patterns");
+    const strengths = clean("strengths");
+    const strategies = clean("strategies");
+    const desired = clean("desired");
+
+    const error = document.getElementById("error");
+    const plan = document.getElementById("plan");
+
+    /*
+      Clear old error feedback immediately when the user
+      attempts a new submission.
+    */
+    error.style.display = "none";
+    error.textContent = "";
+
+    const missing = [];
+
+    if (!grade) missing.push("grade level");
+    if (!behavior) missing.push("observable behavior");
+    if (!desired) missing.push("desired behavior");
+
+    if (missing.length) {
+
+      error.style.display = "block";
+
+      error.textContent =
+        "Please enter the following before generating a plan: "
+        + missing.join(", ")
+        + ".";
+
+      output.hidden = true;
+
+      if (!grade) {
+        document.getElementById("grade").focus();
+      }
+      else if (!behavior) {
+        document.getElementById("behavior").focus();
+      }
+      else {
+        document.getElementById("desired").focus();
+      }
+
+      return;
+    }
+
+
+    const safe = {
+      grade: escapeHTML(grade),
+      behavior: escapeHTML(behavior),
+      baseline: escapeHTML(baseline),
+      patterns: escapeHTML(patterns),
+      strengths: escapeHTML(strengths),
+      strategies: escapeHTML(strategies),
+      desired: escapeHTML(desired)
+    };
+
+
+    /*
+      Baseline handling is intentionally simple:
+      - No baseline -> request baseline collection.
+      - A numeric range is NOT automatically treated as ambiguous.
+      - If a range is present, the educator is reminded to confirm
+        that it measures the behavior described.
+    */
+    let baselineNote = "";
+
+    if (!baseline) {
+
+      baselineNote = `
+        <div class="warning">
+          <strong>Baseline needed:</strong>
+          No behavior-specific baseline was entered.
+          Collect a baseline before treating a numerical goal as established.
+        </div>
+      `;
+
+    }
+    else if (/\b\d+\s*[-–]\s*\d+\b/.test(baseline)) {
+
+      baselineNote = `
+        <div class="warning">
+          <strong>Check the measure:</strong>
+          A frequency range was entered.
+          Confirm that the range measures the same observable behavior
+          described above before using it as a behavior-specific baseline.
+        </div>
+      `;
+
+    }
+    else {
+
+      baselineNote = `
+        <div class="success">
+          <strong>Baseline entered:</strong>
+          Review that the measure refers to the same observable behavior
+          identified above.
+        </div>
+      `;
+
+    }
+
+
+    /*
+      Preventive strategy is now evidence-sensitive.
+      The application only mentions breaking assignments into
+      smaller parts when the documented patterns mention long,
+      lengthy, extended, or independent work/assignments/tasks.
+    */
+    let preventiveStrategy;
+
+    if (patternMentionsLongIndependentWork(patterns)) {
+
+      preventiveStrategy = `
+        <p>
+          The documented pattern mentions longer or independent work.
+          When appropriate, consider breaking longer assignments or
+          independent tasks into smaller parts and providing clear
+          expectations before the work begins.
+        </p>
+      `;
+
+    }
+    else if (patterns) {
+
+      preventiveStrategy = `
+        <p>
+          Use preventive supports that directly address the documented
+          situation or pattern. Clarify expectations before the relevant
+          activity and consider environmental or instructional supports
+          that fit the evidence provided.
+        </p>
+      `;
+
+    }
+    else {
+
+      preventiveStrategy = `
+        <p>
+          No specific classroom pattern was provided. Before selecting
+          a targeted preventive strategy, collect additional information
+          about when and where the observable behavior occurs.
+        </p>
+      `;
+
+    }
+
+
+    /*
+      Strength-based support.
+      These suggestions are intentionally modest and do not infer
+      motivation or diagnosis from the strengths entered.
+    */
+    let strengthSupport;
+
+    if (strengths) {
+
+      strengthSupport = `
+        <p>
+          The educator identified the following strengths or interests:
+          <strong>${safe.strengths}</strong>
+        </p>
+
+        <p>
+          Consider incorporating these documented strengths or interests
+          into encouragement, examples, task presentation, or reinforcement
+          when appropriate. The educator should determine which use is
+          appropriate for the classroom context.
+        </p>
+      `;
+
+    }
+    else {
+
+      strengthSupport = `
+        <p>
+          No strengths or interests were provided.
+          Gather this information before attempting to personalize supports
+          around student strengths.
+        </p>
+      `;
+
+    }
+
+
+    /*
+      Current strategies and possible next steps are separated.
+    */
+    let strategySection;
+
+    if (strategies) {
+
+      strategySection = `
+        <p>
+          <strong>Currently being tried:</strong>
+          ${safe.strategies}
+        </p>
+
+        <p>
+          <strong>Possible next step:</strong>
+          Continue monitoring the current strategy using a simple,
+          behavior-specific measure. If documented progress is limited,
+          consider revising the strategy based on additional evidence.
+        </p>
+      `;
+
+    }
+    else {
+
+      strategySection = `
+        <p>
+          <strong>Currently being tried:</strong>
+          No current strategy was provided.
+        </p>
+
+        <p>
+          <strong>Possible next step:</strong>
+          Select a brief, neutral strategy connected to the documented
+          behavior and monitor its use consistently.
+        </p>
+      `;
+
+    }
+
+
+    plan.innerHTML = `
+
+      <div class="plan-section">
+        <h3>1. Behavioral Concern</h3>
+        <p>
+          <strong>Grade level:</strong>
+          ${safe.grade}
+        </p>
+        <p>
+          <strong>Documented observable behavior:</strong>
+          ${safe.behavior}
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>2. Student Strengths</h3>
+        ${strengthSupport}
+      </div>
+
+
+      <div class="plan-section">
+        <h3>3. Documented Patterns</h3>
+        <p>
+          ${valueOr(
+            safe.patterns,
+            "No documented patterns were provided."
+          )}
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>4. Hypotheses to Monitor</h3>
+        <p>
+          Monitor whether the documented classroom situations or task
+          characteristics are consistently associated with the observable
+          behavior. This is a hypothesis to monitor, not a confirmed explanation.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>5. Measurable Behavior Goals</h3>
+
+        <p>
+          The desired behavior is:
+          <strong>${safe.desired}</strong>
+        </p>
+
+        <p>
+          Use the behavior-specific baseline to determine an appropriate
+          measurable target. Do not treat an unclear measure as a precise baseline.
+        </p>
+
+        ${baselineNote}
+      </div>
+
+
+      <div class="plan-section">
+        <h3>6. Replacement Behaviors</h3>
+
+        <p>
+          Identify a positive, observable behavior that can be practiced
+          during the situations described by the educator.
+          The educator should confirm that the replacement behavior
+          is appropriate for the classroom context.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>7. Preventive Strategies</h3>
+        ${preventiveStrategy}
+      </div>
+
+
+      <div class="plan-section">
+        <h3>8. Teacher Response Strategies</h3>
+        ${strategySection}
+      </div>
+
+
+      <div class="plan-section">
+        <h3>9. Student Self-Monitoring</h3>
+
+        <p>
+          Consider a brief self-monitoring check focused on the desired
+          observable behavior. Keep it simple enough to avoid unnecessary workload.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>10. Parent/Guardian Support</h3>
+
+        <p>
+          When appropriate, share relevant progress information through
+          normal school communication processes and focus on agreed-upon supports.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>11. Low-Workload Progress Monitoring</h3>
+
+        <p>
+          Use one behavior-specific measure that can be recorded consistently,
+          such as frequency, duration, or occurrence/non-occurrence,
+          depending on the behavior.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>12. Dashboard Recommendations</h3>
+
+        <p>
+          <strong>Teacher:</strong>
+          current goal, recent behavior-specific progress,
+          strategies in use, and review date.
+        </p>
+
+        <p>
+          <strong>Student:</strong>
+          clear goal and simple self-monitoring information when appropriate.
+        </p>
+
+        <p>
+          <strong>Parent/Guardian:</strong>
+          appropriate progress information and agreed-upon supports.
+        </p>
+
+        <p>
+          <strong>Administration:</strong>
+          only information needed for an authorized educational purpose.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>13. Information That Should Not Be Displayed</h3>
+
+        <p>
+          Do not display unnecessary identifying information,
+          information about other students, unsupported diagnoses
+          or explanations, or sensitive information that is not needed
+          for the educational task.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>14. Plan Review and Revision</h3>
+
+        <p>
+          Review the plan after collecting enough behavior-specific information
+          to determine whether the strategies appear useful.
+          Continue, modify, gather more information, seek additional support,
+          or gradually reduce supports based on documented progress
+          and educator judgment.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>15. Information Summary and Gaps</h3>
+
+        <p>
+          Grade: ${safe.grade}
+        </p>
+
+        <p>
+          Desired behavior: ${safe.desired}
+        </p>
+
+        <p>
+          <strong>Entered baseline:</strong>
+          ${valueOr(safe.baseline, "No baseline was provided.")}
+        </p>
+
+        ${baseline ? baselineNote : ""}
+
+        <p>
+          Missing information should be clarified before making significant decisions.
+        </p>
+      </div>
+
+
+      <div class="plan-section">
+        <h3>16. Privacy and Human-Review Notes</h3>
+
+        <p>
+          This draft uses only the information entered by the educator.
+          It does not diagnose the student or independently make disciplinary,
+          medical, disability, or educational decisions.
+          An authorized educator or student-support professional should review
+          the plan before implementation.
+        </p>
+
+        <p class="small">
+          This prototype uses predefined browser rules rather than a live AI model.
+          Its output should therefore be treated as structured assistance,
+          not as an independent AI-generated decision.
+        </p>
+      </div>
+
+    `;
+
+
+    output.hidden = false;
+
+    const outputHeading = document.getElementById("outputHeading");
+    outputHeading.focus();
+
+    outputHeading.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
